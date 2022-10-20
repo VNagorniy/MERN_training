@@ -1,6 +1,7 @@
 {
     "serverPort": 5000,
-    "dbUrl": "mongodb+srv://VladimirN:123go@cloud.zbsjtlu.mongodb.net/cloud?retryWrites=true&w=majority"
+    "dbUrl": "mongodb+srv://VladimirN:123go@cloud.zbsjtlu.mongodb.net/cloud?retryWrites=true&w=majority",
+    "secretKey": "mern-secret-key"
 }
 
 
