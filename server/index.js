@@ -7,6 +7,9 @@ const authRouter = require('./routes/auth.routes');
 const app = express();
 const PORT = config.get('serverPort');
 
+const corsmiddleware = require('./middleware/cors.middleware');
+
+app.use(corsmiddleware);
 app.use(express.json());
 app.use('/api/auth', authRouter);
 
