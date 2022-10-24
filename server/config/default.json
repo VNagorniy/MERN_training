@@ -1,7 +1,8 @@
 {
     "serverPort": 5000,
     "dbUrl": "mongodb+srv://VladimirN:123go@cloud.zbsjtlu.mongodb.net/cloud?retryWrites=true&w=majority",
-    "secretKey": "mern-secret-key"
+    "secretKey": "mern-secret-key",
+    "filePath": "E:\\Вова\\Учеба\\IT\\projects\\Skillfactory\\bicycle-final-project\\server\\files"
 }
 
 
