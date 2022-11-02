@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
+const fileUpload = require('express-fileupload');
 const authRouter = require('./routes/auth.routes');
 const fileRouter = require('./routes/file.routes');
 
@@ -10,6 +11,7 @@ const PORT = config.get('serverPort');
 
 const corsmiddleware = require('./middleware/cors.middleware');
 
+app.use(fileUpload({}));
 app.use(corsmiddleware);
 app.use(express.json());
 app.use('/api/auth', authRouter);
