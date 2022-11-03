@@ -9,10 +9,10 @@ const fileRouter = require('./routes/file.routes');
 const app = express();
 const PORT = config.get('serverPort');
 
-const corsmiddleware = require('./middleware/cors.middleware');
+const corsMiddleware = require('./middleware/cors.middleware');
 
 app.use(fileUpload({}));
-app.use(corsmiddleware);
+app.use(corsMiddleware);
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/files', fileRouter);
