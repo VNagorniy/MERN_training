@@ -1,4 +1,3 @@
-const { rejects } = require('assert');
 const fs = require('fs');
 const config = require('config');
 const File = require('../models/File');
@@ -21,6 +20,19 @@ class FileService {
         return reject({ message: 'Ошибка файла' });
       }
     });
+  }
+
+  deleteFile(file) {
+    const path = this.getPath(file);
+    if (file.type === 'dir') {
+      fs.rmdirSync(path);
+    } else {
+      fs.unlinkSync(path);
+    }
+  }
+
+  getPath(file) {
+    return config.get('filePath') + '\\' + file.user + '\\' + file.path;
   }
 }
 
