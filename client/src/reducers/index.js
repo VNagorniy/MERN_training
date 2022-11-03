@@ -3,12 +3,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import fileReducer from './fileReducer';
 import userReducer from './userReducers';
+import uploadReducer from './uploadReducer';
 
 // Корневой reducer
 
 const rootReducer = combineReducers({
   user: userReducer,
   files: fileReducer,
+  upload: uploadReducer,
 });
 
 //Создаём store принимает (корневой reducer, middleware)
