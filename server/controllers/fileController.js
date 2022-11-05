@@ -140,6 +140,20 @@ class FileController {
       return res.status(400).json({ message: 'Каталог не пустой' });
     }
   }
+
+  async searchFile(req, res) {
+    try {
+      //Получение параметра из поисковой строки
+      const searchName = req.query.search;
+      //Получение всех файлов и поиск среди них
+      let files = await File.find({ user: req.user.id });
+      files = files.filter((file) => file.name.includes(searchName));
+      return res.json(files);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({ message: 'Ошибка поиска' });
+    }
+  }
 }
 
 module.exports = new FileController();
