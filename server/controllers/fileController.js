@@ -3,6 +3,7 @@ const config = require('config');
 const fs = require('fs');
 const User = require('../models/User');
 const File = require('../models/File');
+const Uuid = require('uuid');
 
 //Контроллер в котором работаем непосредственно с запросом
 
@@ -152,6 +153,38 @@ class FileController {
     } catch (e) {
       console.log(e);
       return res.status(400).json({ message: 'Ошибка поиска' });
+    }
+  }
+
+  async uploadAvatar(req, res) {
+    try {
+      //Получение файлов из запроса(где аватарка)
+      const file = req.files.file;
+      //Получение пользователя из БД
+      const user = await User.findById(req.user.id);
+      //Генерация название для файла через uuid
+      const avatarName = Uuid.v4() + '.jpg';
+      //Путь перемещения файла (из config и аватарки)
+      file.mv(config.get('staticPath') + '\\' + avatarName);
+      //Добавления названия аватарки
+      user.avatar = avatarName;
+      await user.save();
+      return res.json(user);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({ message: 'Ошибка загрузки аватара' });
+    }
+  }
+
+  async deleteAvatar(req, res) {
+    try {
+      const user = await User.findById(req.user.id);
+      fs.unlinkSync(config.get('staticPath') + '\\' + user.avatar);
+      user.avatar = null;
+      return res.json(user);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({ message: 'Ошибка удаления аватара' });
     }
   }
 }
