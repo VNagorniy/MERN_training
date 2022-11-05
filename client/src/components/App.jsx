@@ -7,6 +7,7 @@ import Login from './authorization/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../actions/user';
 import Disk from './disk/Disk';
+import Profile from './profile/Profile';
 
 function App() {
   //Получение переменной, отвечающей за авторизацию
@@ -30,6 +31,7 @@ function App() {
             </Switch>
           ) : (
             <Switch>
+              <Route path='/profile' component={Profile} />
               <Route path='/' component={Disk} />
               <Redirect to='/' />
             </Switch>
