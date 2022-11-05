@@ -19,6 +19,16 @@
     }
   }
 
+  .fileplate {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  
+  .file-enter-active {
+    animation: file-enter 500ms forwards;
+  }
+
   .file-enter-active {
     animation: file-enter 500ms forwards;
   }

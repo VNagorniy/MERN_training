@@ -4,7 +4,7 @@ import { getFiles, uploadFile } from '../../actions/file';
 import FileList from './fileList/FileList';
 import './disk.scss';
 import Popup from './Popup';
-import { setCurrentDir, setPopupDisplay } from '../../reducers/fileReducer';
+import { setCurrentDir, setFileView, setPopupDisplay } from '../../reducers/fileReducer';
 import Uploader from './uploader/Uploader';
 
 const Disk = () => {
@@ -81,6 +81,8 @@ const Disk = () => {
           <option value='type'>По типу</option>
           <option value='date'>По дате</option>
         </select>
+        <button className='disk__plate' onClick={() => dispatch(setFileView('plate'))} />
+        <button className='disk__list' onClick={() => dispatch(setFileView('list'))} />
       </div>
       <FileList />
       <Popup />
